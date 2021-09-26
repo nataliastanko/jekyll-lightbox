@@ -59,7 +59,6 @@ function setGallery(el) {
         this.innerHTML = '<div id="lightbox"><a id="close"></a><a id="next">&rsaquo;</a><a id="prev">&lsaquo;</a></div>';
         document.getElementById('lightbox').style.display = 'none';
         document.removeEventListener('keydown', hadleKeyboardNavigation, false);
-        console.log('exitgallery')
     };
 
     var elements = document.body.querySelectorAll('.gallery');
@@ -79,7 +78,6 @@ function setGallery(el) {
 		});
 
 		if (link_elements.length>1) {
-            console.log('link_elems')
 			document.getElementById('lightbox').classList.add('gallery');
 			link_elements.forEach(link_element => {
 				link_element.classList.add('gallery');
@@ -92,8 +90,6 @@ function setGallery(el) {
 		Object.keys(gallery_elements).forEach(function (k) {
 			if (gallery_elements[k].classList.contains('current')) currentkey = k;
 		});
-
-        console.log('currrent '+ currentkey)
 
 		if (currentkey==(gallery_elements.length-1)) {
             var nextkey = 0;
@@ -158,21 +154,24 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
 
             // add navigation
-            document.getElementById('lightbox').innerHTML = '<a id="close"></a><a id="next">&rsaquo;</a><a id="prev">&lsaquo;</a>';
+            document.getElementById('lightbox').innerHTML = '<a id="close"></a><a id="next">&rsaquo;</a><a id="prev">&lsaquo;</a><div id="title"></div>';
 
-            var imagediv = document.createElement('div');
+            const imagediv = document.createElement('div');
             const style = "url(" + this.getAttribute('href') + ") center center / contain no-repeat";
             imagediv.setAttribute('class', 'img');
             imagediv.style.background = style;
             imagediv.setAttribute('title', this.getAttribute('title'));
 
-            var image = document.createElement('img');
+            const image = document.createElement('img');
             image.setAttribute('alt', this.getAttribute('title'));
             image.setAttribute('src', this.getAttribute('href'));
 
             imagediv.appendChild(image);
             document.getElementById('lightbox').appendChild(imagediv);
-            document.getElementById('lightbox').insertAdjacentHTML('afterend', '<span>'+this.getAttribute('title')+'</span>');
+            
+            const titleInner = document.createElement('span');
+            titleInner.appendChild(document.createTextNode(this.getAttribute('title')));
+            document.getElementById('title').appendChild(titleInner);
 
             document.getElementById('lightbox').style.display = 'block';
             setGallery(this);
