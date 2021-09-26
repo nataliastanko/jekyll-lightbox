@@ -1,0 +1,28 @@
+author: Natalia Stanko
+email: cranberrycode@gmail.com
+title: Galleries
+description: >- # this means to ignore newlines until "baseurl:"
+  Galleries
+baseurl: ""
+url: ""
+
+# plugins:
+
+collections:
+  pages:
+    output: true
+
+exclude:
+  - README.md
+  - .jekyll-cache/
+  - .vscode
+  - .rspec
+  - .ruby-version
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script type="text/javascript" src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/lightbox.css' | relative_url }}">
+  <body>
+    <header class="site-header" role="banner">
+      <div class="wrapper">
+        <a class="site-title" rel="author" href="{{ '/'' | relative_url }}">{{ site.title | escape }}</a>
+
+          <nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+            <label for="nav-trigger">
+              <span class="menu-icon">
+              </span>
+            </label>
+
+            <div class="trigger">
+                <a class="page-link" href="{{ '/nasa' | relative_url }}">NASA</a>
+            </div>
+          </nav>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {%- if page.title -%}
+          <h1 class="page-heading">{{ page.title }}</h1>
+        {%- endif -%}
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <ul class="contact-list">
+              <li class="p-name">
+                {%- if site.author -%}
+                  {{ site.author | escape }}
+                {%- else -%}
+                  {{ site.title | escape }}
+                {%- endif -%}
+                </li>
+                {%- if site.email -%}
+                <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                {%- endif -%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
